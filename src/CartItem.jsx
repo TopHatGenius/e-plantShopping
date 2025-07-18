@@ -5,7 +5,7 @@ import './CartItem.css';
 
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); //Initialize dispatch variable to enable useDispatch() function.
 
   // Calculate total amount for all products in the cart
   const calculateTotalAmount = () => {
@@ -24,34 +24,28 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleCheckoutShopping = (e) => {
-    alert('Functionality to be added for future reference');
+    alert('Functionality to be added for future reference'); //Placeholder for personal future work.
   };
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity({
-      name: item.name,
-      quantity: item.quantity + 1
-    }));
+    dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 })); //Dispatch updateQuantity to increase item quantity by 1.
   };
 
   const handleDecrement = (item) => {
-    if (item.quantity > 1) {
-      dispatch(updateQuantity({
-        name: item.name,
-        quantity: item.quantity - 1
-      }));
-    } else {
-      dispatch(removeItem(item.name));
+    if (item.quantity > 1) { //Conditional statement - executes first code block if item.quantity is 1 or more.
+      dispatch(updateQuantity({ name: item.name, quantity: item.quantity - 1 })); //Dispatch updateQuantity to decrease quantity by 1.
+    } else { //Conditional statement - executes second code block if item.quantity is less than 1
+      dispatch(removeItem(item.name)); //Dispatch removeItem to remove the item from the shopping cart.
     }
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item.name));
+    dispatch(removeItem(item.name)); //Removes item when removeItem is called.
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-    const cost = parseFloat(item.cost.substring(1));
+    const cost = parseFloat(item.cost.substring(1)); //parseFloat used to convert string into floating point number.
     return cost * item.quantity;
   };
   
