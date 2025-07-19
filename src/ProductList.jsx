@@ -308,7 +308,8 @@ function ProductList({ onHomeClick }) {
                                         <div className="product-cost">{plant.cost}</div> {/* Display plant cost. Removed $ sign in line due to items in the array already having a $ sign associated with the cost - it was causing an issue of two dollar signs to appear */}
                                         <button
                                             className="product-button"
-                                            onClick={() => handleAddToCart(plant)} // Handle adding plant to cart
+                                            onClick={() => handleAddToCart(plant)} // Handle adding plant to cart.
+                                            disabled = { addedToCart [ plant.name ]} //Disables button after adding it to the cart.
                                         >
                                             Add to Cart
                                         </button>
